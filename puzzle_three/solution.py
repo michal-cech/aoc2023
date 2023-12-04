@@ -1,6 +1,7 @@
 from copy import deepcopy
 from pathlib import Path
 from typing import Callable
+import time
 
 class Coordinates:
 
@@ -99,6 +100,7 @@ def part_2(lines: list[str], coordinates: Coordinates):
     return _generic_solution(lines, coordinates, power_locally)
 
 def main():
+    start_time = time.time()
     with open(Path(__file__).parent / "input_file.txt", "r") as f:
         content = f.readlines()
     coordinates = construct_mapping(content)
@@ -106,6 +108,7 @@ def main():
     result_2 = part_2(content, deepcopy(coordinates))
     print(f"Task 1 solution: {result_1}")
     print(f"Task 2 solution: {result_2}")
+    print(time.time() - start_time)
     return 1
 
 if __name__ == "__main__":
